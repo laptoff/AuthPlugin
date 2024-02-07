@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public final class AuthPlugin extends JavaPlugin {
 
     private static AuthPlugin instance;
-    public static final Logger LOGGER = Logger.getLogger("CivilisationPlot");
+    public static final Logger LOGGER = Logger.getLogger("AuthPlugin");
 
     @Override
     public void onEnable(){
