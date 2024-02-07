@@ -1,4 +1,4 @@
-package fr.laptoff;
+package fr.laptoff.authplugin;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +14,10 @@ public final class AuthPlugin extends JavaPlugin {
         instance = this;
 
         LOGGER.info("The authentication system started !");
+
+        LOGGER.info(" /|  ");
+        LOGGER.info("/-||)");
+        LOGGER.info("   | ");
     }
 
     @Override

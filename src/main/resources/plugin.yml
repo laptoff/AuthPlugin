@@ -1,0 +1,15 @@
+#    ,.       .  .   .-,--. .
+#   / |   . . |- |-.  '|__/ |  . . ,-. . ,-.
+#  /~~|-. | | |  | |  .|    |  | | | | | | |
+#,'   `-' `-' `' ' '  `'    `' `-' `-| ' ' '
+#                                   ,|
+#                                   `'
+#by laptoff,
+
+name: AuthPlugin
+version: '${project.version}'
+author: laptoff
+load: STARTUP
+contributors: [laptoff]
+main: fr.laptoff.authplugin.AuthPlugin
+api-version: '1.20'
