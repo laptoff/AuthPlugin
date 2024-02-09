@@ -6,6 +6,53 @@
 #                                   `'
 #by laptoff,
 
+########################################################################################################################
+#                                                       Database                                                       #
+#                                                                                                                      #
+#This section is to set database parameters.                                                                           #
+#You can disable/enable the database system by setting "enable" to "true" or "false".                                  #
+#Please, if you can, follow our recommendations.                                                                       #
+#                                                                                                                      #
+#We recommend, for you:                                                                                                #
+# - Use a password for the user which have access at your database.                                                    #
+# - Don't use the root user.                                                                                           #
+#                                                                                                                      #
+#Notes: We prefer mariadb. This is the driver will be prioritized over the others.                                     #
+#To modify a setting, you need to stop your server. Otherwise, AuthPlugin will be disconnected from the database.      #
+########################################################################################################################
+
+
+database:
+  enable: false
+
+  #Motor is the system which is used by your database. For now, only "mysql" (for mysql) and "mariadb" (for mariadb) can be used.
+  motor: mariadb
+
+  #You must to setting the ip address of the server which host your database. If your database run on locale, you can set to "localht" or "127.0.0.1".
+  host: 127.0.0.1
+
+  #You must set the port of your server. The default port for mysql or mariadb is 3306.
+  port: 3306
+
+  #The name of your database. It's an obligation.
+  database_name: authplugin_database
+
+  #You need to set the user which will all access to the database. Please read the recommended section !
+  user: root
+
+  #The password of the user. Please read the recommendation section !
+  password: ineedcoffee974
+
+
+
 messages:
-  onStart: "The authentication system started !"
-  onDisable: "The authentication system is disabled !"
+
+  #Startings messages
+  starting:
+    onStart: "The authentication system started !"
+    onDisable: "The authentication system is disabled !"
+
+  #Databases messages
+  database:
+    success_connection: "Authenticator connected to database !"
+    success_disconnection: "Authenticator disconnected to database !"
