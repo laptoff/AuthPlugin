@@ -5,3 +5,7 @@
 #                                   ,|
 #                                   `'
 #by laptoff,
+
+messages:
+  onStart: "The authentication system started !"
+  onDisable: "The authentication system is disabled !"

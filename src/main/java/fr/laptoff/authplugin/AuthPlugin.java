@@ -1,27 +1,38 @@
 package fr.laptoff.authplugin;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.logging.Logger;
 
 public final class AuthPlugin extends JavaPlugin {
 
     private static AuthPlugin instance;
-    public static final Logger LOGGER = Logger.getLogger("AuthPlugin");
+    private static final ConsoleCommandSender console = Bukkit.getConsoleSender();
+    private static String onStartMessage;
+    private static String onDisableMessage;
 
     @Override
     public void onEnable() {
         instance = this;
 
-        LOGGER.info("The authentication system started !");
+        onStartMessage = getConfig().getString("messages.onStart");
+        onDisableMessage = getConfig().getString("messages.onDisable");
+
+        if (onStartMessage == null)
+            onStartMessage = "The authentication system started !";
+
+        if (onDisableMessage == null)
+            onDisableMessage = "The authentication system is disabled !";
+
+        console.sendMessage(MiniMessage.miniMessage().deserialize(onStartMessage));
 
         //Start introduction.
-        Bukkit.getConsoleSender().sendMessage(Component
+        console.sendMessage(Component
                 .text("by ")
                 .color(NamedTextColor.YELLOW)
                 .append(Component
@@ -29,20 +40,20 @@ public final class AuthPlugin extends JavaPlugin {
                         .color(NamedTextColor.GOLD)
                         .decorate(TextDecoration.ITALIC)));
 
-        Bukkit.getConsoleSender().sendMessage(Component.text(""));
+        console.sendMessage(Component.text(""));
 
-        Bukkit.getConsoleSender().sendMessage(Component
+        console.sendMessage(Component
                 .text(" /|  ")
                 .color(NamedTextColor.GREEN));
 
-        Bukkit.getConsoleSender().sendMessage(Component
+        console.sendMessage(Component
                 .text("/-|")
                 .color(NamedTextColor.GREEN)
                 .append(Component
                         .text("|)")
                         .color(NamedTextColor.BLUE)));
 
-        Bukkit.getConsoleSender().sendMessage(Component
+        console.sendMessage(Component
                 .text("   | ")
                 .color(NamedTextColor.BLUE)
                 .append(Component
@@ -58,7 +69,7 @@ public final class AuthPlugin extends JavaPlugin {
     @Override
     public void onDisable(){
 
-        LOGGER.info("The authentication system is disabled !");
+        console.sendMessage(MiniMessage.miniMessage().deserialize(onDisableMessage));
 
     }
 
