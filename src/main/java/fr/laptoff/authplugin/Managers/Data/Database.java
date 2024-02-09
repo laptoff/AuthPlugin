@@ -1,4 +1,4 @@
-package fr.laptoff.authplugin.Managers.Database;
+package fr.laptoff.authplugin.Managers.Data;
 
 import fr.laptoff.authplugin.AuthPlugin;
 

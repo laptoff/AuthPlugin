@@ -1,6 +1,6 @@
 package fr.laptoff.authplugin;
 
-import fr.laptoff.authplugin.Managers.Database.Database;
+import fr.laptoff.authplugin.Managers.Data.Database;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
