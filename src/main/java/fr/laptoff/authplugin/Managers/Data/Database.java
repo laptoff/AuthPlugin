@@ -53,9 +53,7 @@ public class Database {
         }
     }
 
-
-
-    public static boolean isConnected()
+    public boolean isConnected()
     {
         try {
             return co != null && !co.isClosed() && plugin.getConfig().getBoolean("Database.enable");
@@ -90,8 +88,16 @@ public class Database {
 
 
     public void setup(){
+        try {
+            if (!doesTableExist("members")){
+                PreparedStatement pstmt = this.getConnection().prepareStatement("CREATE TABLE members (id INT AUTO_INCREMENT PRIMARY KEY, uuid VARCHAR(50), json VARCHAR(50));");
+                pstmt.execute();
+            }
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
 
-        //for the database setup
+
 
     }
 

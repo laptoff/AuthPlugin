@@ -14,7 +14,7 @@ public final class AuthPlugin extends JavaPlugin {
 
     private static AuthPlugin instance;
     private static final ConsoleCommandSender console = Bukkit.getConsoleSender();
-    private Database database;
+    private static Database database;
     private static String onStartMessage;
     private static String onDisableMessage;
     private static String databaseConnectionMessage;
@@ -102,5 +102,9 @@ public final class AuthPlugin extends JavaPlugin {
 
     public static AuthPlugin getInstance(){
         return instance;
+    }
+
+    public Database getDatabase(){
+        return database;
     }
 }
