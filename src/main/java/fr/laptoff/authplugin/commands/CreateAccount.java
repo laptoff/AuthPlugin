@@ -6,11 +6,15 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 
-public class CreateAccount implements CommandExecutor, Listener {
+import java.io.File;
+import java.io.IOException;
+
+public class CreateAccount implements CommandExecutor {
 
     AuthPlugin plugin = AuthPlugin.getInstance();
     String argumentsError = plugin.getConfig().getString("messages.errors.wrong_number_of_arguments");
@@ -85,6 +89,15 @@ public class CreateAccount implements CommandExecutor, Listener {
 
             }
 
+        }
+
+        if (args.length == 0 || args[1].equalsIgnoreCase("help")){
+
+            File file = new File(plugin.getDataFolder() + "/config/help.yml");
+            YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
+
+
+            player.sendMessage(MiniMessage.miniMessage().deserialize(config.getString("help_message")));
         }
 
         return false;

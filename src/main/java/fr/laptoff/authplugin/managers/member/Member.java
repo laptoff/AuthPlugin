@@ -154,7 +154,6 @@ public class Member {
         }
 
         return member2;
-
     }
 
     public void saveToLocal(){

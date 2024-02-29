@@ -5,6 +5,7 @@ import fr.laptoff.authplugin.listeners.OnPlayerDamage;
 import fr.laptoff.authplugin.listeners.OnPlayerJoin;
 import fr.laptoff.authplugin.listeners.OnPlayerMove;
 import fr.laptoff.authplugin.managers.data.Database;
+import fr.laptoff.authplugin.managers.data.FileManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -12,6 +13,8 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 
 public final class AuthPlugin extends JavaPlugin {
@@ -28,6 +31,7 @@ public final class AuthPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
+        FileManager.createResourceFile(new File("config/help.yml"));
 
         onStartMessage = getConfig().getString("messages.onStart");
         onDisableMessage = getConfig().getString("messages.onDisable");
