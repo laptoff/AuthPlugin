@@ -1,6 +1,7 @@
 package fr.laptoff.authplugin;
 
 import fr.laptoff.authplugin.commands.CreateAccount;
+import fr.laptoff.authplugin.listeners.OnPlayerCommand;
 import fr.laptoff.authplugin.listeners.OnPlayerDamage;
 import fr.laptoff.authplugin.listeners.OnPlayerJoin;
 import fr.laptoff.authplugin.listeners.OnPlayerMove;
@@ -96,6 +97,7 @@ public final class AuthPlugin extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerJoin(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerMove(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerDamage(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerCommand(), this);
 
         getCommand("account").setExecutor(new CreateAccount());
 
