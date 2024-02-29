@@ -1,4 +1,4 @@
-package fr.laptoff.authplugin.Managers.Data;
+package fr.laptoff.authplugin.managers.data;
 
 import fr.laptoff.authplugin.AuthPlugin;
 
@@ -23,11 +23,11 @@ public class Database {
             {
                 String motorDriver = "org.mariadb";
 
-                if (Objects.requireNonNull(plugin.getConfig().getString("Database.motor")).equalsIgnoreCase("mysql"))
+                if (Objects.requireNonNull(plugin.getConfig().getString("database.motor")).equalsIgnoreCase("mysql"))
                     motorDriver = "com.mysql.cj";
 
                 Class.forName(motorDriver + ".jdbc.Driver"); //loading of the driver.
-                co = DriverManager.getConnection("jdbc:" + plugin.getConfig().getString("Database.motor") + "://" + plugin.getConfig().getString("Database.host") + ":" + plugin.getConfig().getString("Database.port") + "/" + plugin.getConfig().getString("Database.database_name"), plugin.getConfig().getString("Database.user"), plugin.getConfig().getString("Database.password"));
+                co = DriverManager.getConnection("jdbc:" + plugin.getConfig().getString("database.motor") + "://" + plugin.getConfig().getString("database.host") + ":" + plugin.getConfig().getString("Database.port") + "/" + plugin.getConfig().getString("Database.database_name"), plugin.getConfig().getString("Database.user"), plugin.getConfig().getString("Database.password"));
             }
             catch (SQLException e)
             {
@@ -56,7 +56,7 @@ public class Database {
     public boolean isConnected()
     {
         try {
-            return co != null && !co.isClosed() && plugin.getConfig().getBoolean("Database.enable");
+            return co != null && !co.isClosed() && plugin.getConfig().getBoolean("database.enable") && plugin.getDatabase() != null;
         }
         catch (SQLException e)
         {
@@ -67,7 +67,10 @@ public class Database {
 
     public static boolean isOnline() {
         try {
-            return !(co == null) || !co.isClosed();
+            if (co != null)
+                return co.isClosed();
+
+            return false;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

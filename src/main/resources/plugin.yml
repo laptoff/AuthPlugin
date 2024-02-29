@@ -13,3 +13,8 @@ load: STARTUP
 contributors: [laptoff]
 main: fr.laptoff.authplugin.AuthPlugin
 api-version: '1.20'
+
+commands:
+  account:
+    description: allows accounts managing.
+    aliases: [ac]

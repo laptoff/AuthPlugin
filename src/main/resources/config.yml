@@ -56,3 +56,20 @@ messages:
   database:
     success_connection: "Authenticator connected to database !"
     success_disconnection: "Authenticator disconnected to database !"
+
+  #Authenticator Messages
+  authenticator:
+    create_account: <gold>You must create your account ! (/account new [identifier], [password])
+    connect_to_account: <yellow> You must to connect at your account ! (/account connect [password])
+    success_creation: <green>Good Game! You created your account! <yellow> Connect to your account now! (/account connect [password])
+    success_connection: <green> Good Game! You are now connected !
+
+
+  errors:
+    wrong_number_of_arguments: <red>Your command has a wrong number of arguments !
+
+    #authenticator
+    already_an_account: <red> You have already an account !
+    already_connected: <red> You are already connected !
+    has_not_account: <red> You must to create an account !
+    incorrect_password: <red> This is the wrong password :(

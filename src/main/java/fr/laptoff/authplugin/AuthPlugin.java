@@ -1,6 +1,10 @@
 package fr.laptoff.authplugin;
 
-import fr.laptoff.authplugin.Managers.Data.Database;
+import fr.laptoff.authplugin.commands.CreateAccount;
+import fr.laptoff.authplugin.listeners.OnPlayerDamage;
+import fr.laptoff.authplugin.listeners.OnPlayerJoin;
+import fr.laptoff.authplugin.listeners.OnPlayerMove;
+import fr.laptoff.authplugin.managers.data.Database;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -14,7 +18,7 @@ public final class AuthPlugin extends JavaPlugin {
 
     private static AuthPlugin instance;
     private static final ConsoleCommandSender console = Bukkit.getConsoleSender();
-    private static Database database;
+    private static final Database database = new Database();
     private static String onStartMessage;
     private static String onDisableMessage;
     private static String databaseConnectionMessage;
@@ -23,6 +27,7 @@ public final class AuthPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        saveDefaultConfig();
 
         onStartMessage = getConfig().getString("messages.onStart");
         onDisableMessage = getConfig().getString("messages.onDisable");
@@ -75,14 +80,20 @@ public final class AuthPlugin extends JavaPlugin {
                         .text("Plugin")
                         .color(NamedTextColor.BLUE)));
 
-        if (getConfig().getBoolean("Database.enable")){
-            database = new Database();
+        if (getConfig().getBoolean("database.enable")){
+
             database.connection();
 
             database.setup();
 
             console.sendMessage(MiniMessage.miniMessage().deserialize(databaseConnectionMessage));
         }
+
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerJoin(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerMove(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerDamage(), this);
+
+        getCommand("account").setExecutor(new CreateAccount());
 
 
     }
