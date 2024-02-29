@@ -2,4 +2,5 @@ help_message: '<gold>Help Authenticator</gold> <br>
 <bold>Commands:</bold><br>
  - /account new [identifier] [password] --> Create a new account. <br>
  - /account connect [password] --> Connect to your account. <br>
- - /account help --> Show help message. <br>'
+ - /account help --> Show help message. <br>
+ - /account forgot [password] --> Delete your account. <br>'

@@ -16,13 +16,14 @@ import java.io.IOException;
 
 public class CreateAccount implements CommandExecutor {
 
-    AuthPlugin plugin = AuthPlugin.getInstance();
-    String argumentsError = plugin.getConfig().getString("messages.errors.wrong_number_of_arguments");
-    String alreadyAnAccount = plugin.getConfig().getString("messages.errors.already_an_account");
-    String alreadyConnected = plugin.getConfig().getString("messages.errors.already_connected");
-    String hasNotAccount = plugin.getConfig().getString("messages.errors.has_not_account");
-    String successConnection = plugin.getConfig().getString("messages.authenticator.success_connection");
-    String successAccountCreation = plugin.getConfig().getString("messages.authenticator.success_creation");
+    private final AuthPlugin plugin = AuthPlugin.getInstance();
+    private final String argumentsError = plugin.getConfig().getString("messages.errors.wrong_number_of_arguments");
+    private final String alreadyAnAccount = plugin.getConfig().getString("messages.errors.already_an_account");
+    private final String alreadyConnected = plugin.getConfig().getString("messages.errors.already_connected");
+    private final String hasNotAccount = plugin.getConfig().getString("messages.errors.has_not_account");
+    private final String successConnection = plugin.getConfig().getString("messages.authenticator.success_connection");
+    private final String successAccountCreation = plugin.getConfig().getString("messages.authenticator.success_creation");
+    private final String incorrectPassword = plugin.getConfig().getString("messages.errors.incorrect_password");
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
@@ -86,7 +87,8 @@ public class CreateAccount implements CommandExecutor {
                 player.sendMessage(MiniMessage.miniMessage().deserialize(successConnection));
                 return true;
             } else {
-
+                player.sendMessage(MiniMessage.miniMessage().deserialize(incorrectPassword));
+                return false;
             }
 
         }
@@ -98,6 +100,23 @@ public class CreateAccount implements CommandExecutor {
 
 
             player.sendMessage(MiniMessage.miniMessage().deserialize(config.getString("help_message")));
+        }
+
+        if (args[0].equalsIgnoreCase("forgot")){
+
+            if (args.length != 2){
+                player.sendMessage(MiniMessage.miniMessage().deserialize(argumentsError));
+                return false;
+            }
+
+
+            if (!args[1].equalsIgnoreCase(Member.getMember(player.getUniqueId()).getPassword())){
+                player.sendMessage(MiniMessage.miniMessage().deserialize(incorrectPassword));
+                return false;
+            }
+
+            Member.getMember(player.getUniqueId()).delete();
+
         }
 
         return false;
