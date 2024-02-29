@@ -97,6 +97,7 @@ public final class AuthPlugin extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerCommand(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerBreak(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerPlacingBlocks(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerDrop(), this);
 
         getCommand("account").setExecutor(new CreateAccount());
 
