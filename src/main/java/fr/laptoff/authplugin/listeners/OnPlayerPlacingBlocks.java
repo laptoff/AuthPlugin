@@ -4,15 +4,14 @@ import fr.laptoff.authplugin.managers.member.Member;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
-public class OnPlayerDamage implements Listener {
+public class OnPlayerPlacingBlocks implements Listener {
 
     @EventHandler
-    public void OnPlayerDamage(EntityDamageEvent e){
+    public void OnPlayerPlacingBlocks(BlockPlaceEvent e){
 
-        if (!(e.getEntity() instanceof Player player))
-            return;
+        Player player = e.getPlayer();
 
         if (!Member.isExists(player.getUniqueId()) || !Member.getMember(player.getUniqueId()).isAuthenticate())
             e.setCancelled(true);

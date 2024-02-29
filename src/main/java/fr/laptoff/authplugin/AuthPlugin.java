@@ -1,10 +1,7 @@
 package fr.laptoff.authplugin;
 
 import fr.laptoff.authplugin.commands.CreateAccount;
-import fr.laptoff.authplugin.listeners.OnPlayerCommand;
-import fr.laptoff.authplugin.listeners.OnPlayerDamage;
-import fr.laptoff.authplugin.listeners.OnPlayerJoin;
-import fr.laptoff.authplugin.listeners.OnPlayerMove;
+import fr.laptoff.authplugin.listeners.*;
 import fr.laptoff.authplugin.managers.data.Database;
 import fr.laptoff.authplugin.managers.data.FileManager;
 import net.kyori.adventure.text.Component;
@@ -98,6 +95,8 @@ public final class AuthPlugin extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerMove(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerDamage(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerCommand(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerBreak(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerPlacingBlocks(), this);
 
         getCommand("account").setExecutor(new CreateAccount());
 
