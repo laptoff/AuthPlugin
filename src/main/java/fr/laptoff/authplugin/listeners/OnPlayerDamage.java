@@ -14,7 +14,7 @@ public class OnPlayerDamage implements Listener {
         if (!(e.getEntity() instanceof Player player))
             return;
 
-        if (!Member.isExists(player.getUniqueId()) || Member.getMember(player.getUniqueId()).isAuthenticate()){
+        if (!Member.isExists(player.getUniqueId()) || !Member.getMember(player.getUniqueId()).isAuthenticate()){
             e.setCancelled(true);
         }
 
