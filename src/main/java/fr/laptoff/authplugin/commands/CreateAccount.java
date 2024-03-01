@@ -41,12 +41,7 @@ public class CreateAccount implements CommandExecutor {
             member = Member.getMember(player.getUniqueId());
 
         if (args.length == 0 || args[0].equalsIgnoreCase("help")){
-
-            File file = new File(plugin.getDataFolder() + "/config/help.yml");
-            YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
-
-
-            player.sendMessage(MiniMessage.miniMessage().deserialize(config.getString("help_message")));
+            player.sendMessage(Messages.HELP_COMMAND.getComponent());
             return true;
         }
 

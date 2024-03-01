@@ -22,7 +22,13 @@ public enum Messages {
     DATABASE_CONNECTION_MESSAGE("messages.database.success_connection", "Authenticator connected to database !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
     DATABASE_DISCONNECTION_MESSAGE("messages.database.success_disconnection", "Authenticator disconnected to database !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
     INCORRECT_IDENTIFIER("incorrect_identifier", "<red> This is the wrong identifier :(", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
-    INCORRECT_ENTITY("incorrect_entity", "<red> You need to be a player to perform this command !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml"));
+    INCORRECT_ENTITY("incorrect_entity", "<red> You need to be a player to perform this command !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
+    HELP_COMMAND("help_message", "<gold>Help Authenticator</gold> <br>\n" +
+            "<bold>Commands:</bold><br>\n" +
+            " - /account new [identifier] [password] --> Create a new account. <br>\n" +
+            " - /account connect [password] --> Connect to your account. <br>\n" +
+            " - /account help --> Show help message. <br>\n" +
+            " - /account forgot [identifier] [password] --> Delete your account. <br>", new File(AuthPlugin.getInstance().getDataFolder() + "/config/help.yml"));
 
     private final String Path;
     private final String DefaultValue;
