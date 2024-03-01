@@ -75,3 +75,4 @@ messages:
     has_not_account: <red> You must to create an account !
     incorrect_password: <red> This is the wrong password :(
     incorrect_identifier: <red> This is the wrong identifier :(
+    incorrect_entity: <red> You need to be a player to perform this command !

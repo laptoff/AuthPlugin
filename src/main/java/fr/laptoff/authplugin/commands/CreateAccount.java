@@ -29,8 +29,11 @@ public class CreateAccount implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
 
-        if (!(sender instanceof Player player))
+        if (!(sender instanceof Player player)){
+            sender.sendMessage(Messages.INCORRECT_ENTITY.getComponent());
             return false;
+        }
+
 
         Member member = null;
 
@@ -87,7 +90,7 @@ public class CreateAccount implements CommandExecutor {
                 return false;
             }
 
-            if (args[1].equalsIgnoreCase(member.getPassword())){
+            if (args[1].equals(member.getPassword())){
                 member.setAuthenticate(true);
                 member.save();
                 player.sendMessage(successConnection);
@@ -111,12 +114,12 @@ public class CreateAccount implements CommandExecutor {
                 return false;
             }
 
-            if (!args[1].equalsIgnoreCase(Member.getMember(player.getUniqueId()).getPassword())){
+            if (!args[1].equals(Member.getMember(player.getUniqueId()).getPassword())){
                 player.sendMessage(incorrectPassword);
                 return false;
             }
 
-            if (!args[2].equalsIgnoreCase(Member.getMember(player.getUniqueId()).getIdentifier())){
+            if (!args[2].equals(Member.getMember(player.getUniqueId()).getIdentifier())){
                 player.sendMessage(Messages.INCORRECT_IDENTIFIER.getComponent());
                 return false;
             }
