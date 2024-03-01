@@ -4,6 +4,7 @@ import fr.laptoff.authplugin.commands.CreateAccount;
 import fr.laptoff.authplugin.listeners.*;
 import fr.laptoff.authplugin.managers.data.Database;
 import fr.laptoff.authplugin.managers.data.FileManager;
+import fr.laptoff.authplugin.managers.data.Messages;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -20,10 +21,10 @@ public final class AuthPlugin extends JavaPlugin {
     private static AuthPlugin instance;
     private static final ConsoleCommandSender console = Bukkit.getConsoleSender();
     private static final Database database = new Database();
-    private static String onStartMessage;
-    private static String onDisableMessage;
-    private static String databaseConnectionMessage;
-    private static String databaseDisconnectionMessage;
+    private static Component onStartMessage;
+    private static Component onDisableMessage;
+    private static Component databaseConnectionMessage;
+    private static Component databaseDisconnectionMessage;
 
     @Override
     public void onEnable() {
@@ -31,24 +32,12 @@ public final class AuthPlugin extends JavaPlugin {
         saveDefaultConfig();
         FileManager.createResourceFile(new File("config/help.yml"));
 
-        onStartMessage = getConfig().getString("messages.onStart");
-        onDisableMessage = getConfig().getString("messages.onDisable");
-        databaseConnectionMessage = getConfig().getString("messages.database.success_connection");
-        databaseDisconnectionMessage = getConfig().getString("messages.database.success_disconnection");
+        onStartMessage = Messages.ON_START_MESSAGE.getComponent();
+        onDisableMessage = Messages.ON_DISABLE_MESSAGE.getComponent();
+        databaseConnectionMessage = Messages.DATABASE_CONNECTION_MESSAGE.getComponent();
+        databaseDisconnectionMessage = Messages.DATABASE_DISCONNECTION_MESSAGE.getComponent();
 
-        if (onStartMessage == null)
-            onStartMessage = "The authentication system started !";
-
-        if (onDisableMessage == null)
-            onDisableMessage = "The authentication system is disabled !";
-
-        if (databaseConnectionMessage == null)
-            databaseConnectionMessage = "Authenticator connected to database !";
-
-        if (databaseDisconnectionMessage == null)
-            databaseDisconnectionMessage = "Authenticator disconnected to database !";
-
-        console.sendMessage(MiniMessage.miniMessage().deserialize(onStartMessage));
+        console.sendMessage(onStartMessage);
 
         //Start introduction.
         console.sendMessage(Component
@@ -88,7 +77,7 @@ public final class AuthPlugin extends JavaPlugin {
 
             database.setup();
 
-            console.sendMessage(MiniMessage.miniMessage().deserialize(databaseConnectionMessage));
+            console.sendMessage(databaseConnectionMessage);
         }
 
         Bukkit.getServer().getPluginManager().registerEvents(new OnPlayerJoin(), this);
@@ -107,12 +96,12 @@ public final class AuthPlugin extends JavaPlugin {
     @Override
     public void onDisable(){
 
-        console.sendMessage(MiniMessage.miniMessage().deserialize(onDisableMessage));
+        console.sendMessage(onDisableMessage);
 
         if (Database.isOnline()){
             database.disconnection();
 
-            console.sendMessage(MiniMessage.miniMessage().deserialize(databaseDisconnectionMessage));
+            console.sendMessage(databaseDisconnectionMessage);
         }
 
     }

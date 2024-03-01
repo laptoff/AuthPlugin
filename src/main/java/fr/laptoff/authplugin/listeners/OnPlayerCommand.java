@@ -13,7 +13,13 @@ public class OnPlayerCommand implements Listener {
 
         Player player = e.getPlayer();
 
+        String command = e.getMessage().split(" ")[0].substring(1);
+
         if (!Member.isExists(player.getUniqueId()) || !Member.getMember(player.getUniqueId()).isAuthenticate()){
+
+            if (command.equalsIgnoreCase("account") || command.equalsIgnoreCase("ac"))
+                return;
+
             e.setCancelled(true);
         }
 

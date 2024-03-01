@@ -63,6 +63,7 @@ messages:
     connect_to_account: <yellow> You must to connect at your account ! (/account connect [password])
     success_creation: <green>Good Game! You created your account! <yellow> Connect to your account now! (/account connect [password])
     success_connection: <green> Good Game! You are now connected !
+    success_forgot: <green> Your account is now deleted ! Please reconnect yourself !
 
 
   errors:
