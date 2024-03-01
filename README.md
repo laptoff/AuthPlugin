@@ -10,8 +10,9 @@ This plugin allows players to add a password to authorize themselves only (of us
 ### Commands:
     /account = /ac
 
- - /account new <identifier> <password>
- - account connect <password>
+ - /account new [identifier] [password]
+ - /account connect [password]
+ - /account forgot [password] [identifier]
 
 The identifier is just a security to prove that players are owners of their account. The identifier is not visible (only by people that have access to server files).
 ***
