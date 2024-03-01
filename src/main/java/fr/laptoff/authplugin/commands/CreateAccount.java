@@ -101,14 +101,23 @@ public class CreateAccount implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("forgot")){
 
-            if (args.length != 2){
+            if (args.length != 3){
                 player.sendMessage(argumentsError);
                 return false;
             }
 
+            if (!Member.isExists(player.getUniqueId())){
+                player.sendMessage(Messages.HAS_NOT_ACCOUNT.getComponent());
+                return false;
+            }
 
             if (!args[1].equalsIgnoreCase(Member.getMember(player.getUniqueId()).getPassword())){
                 player.sendMessage(incorrectPassword);
+                return false;
+            }
+
+            if (!args[2].equalsIgnoreCase(Member.getMember(player.getUniqueId()).getIdentifier())){
+                player.sendMessage(Messages.INCORRECT_IDENTIFIER.getComponent());
                 return false;
             }
 

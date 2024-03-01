@@ -15,7 +15,7 @@ public class MemberTypeAdapter extends TypeAdapter<Member> {
 
         writer.name("pseudo").value(member.getPseudo());
         writer.name("uuid").value(member.getUuid().toString());
-        writer.name("identifier").value(member.getMail());
+        writer.name("identifier").value(member.getIdentifier());
         writer.name("password").value(member.getPassword());
         writer.name("isAuthenticate").value(member.isAuthenticate());
 

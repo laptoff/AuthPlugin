@@ -43,7 +43,7 @@ public class Member {
         return this.Uuid;
     }
 
-    public String getMail(){
+    public String getIdentifier(){
         return this.Identifier;
     }
 
@@ -63,7 +63,7 @@ public class Member {
         this.Uuid = uuid;
     }
 
-    public void setMail(String identifier){
+    public void setIdentifier(String identifier){
         this.Identifier = identifier;
     }
 

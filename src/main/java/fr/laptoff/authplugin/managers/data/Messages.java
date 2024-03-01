@@ -20,7 +20,8 @@ public enum Messages {
     ON_START_MESSAGE("messages.onStart", "The authentication system started !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
     ON_DISABLE_MESSAGE("messages.onDisable", "The authentication system is disabled !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
     DATABASE_CONNECTION_MESSAGE("messages.database.success_connection", "Authenticator connected to database !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
-    DATABASE_DISCONNECTION_MESSAGE("messages.database.success_disconnection", "Authenticator disconnected to database !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml"));
+    DATABASE_DISCONNECTION_MESSAGE("messages.database.success_disconnection", "Authenticator disconnected to database !", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
+    INCORRECT_IDENTIFIER("incorrect_identifier", "<red> This is the wrong identifier :(", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml"));
 
     private final String Path;
     private final String DefaultValue;
