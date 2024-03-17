@@ -24,6 +24,7 @@ public class Member {
     private JsonManager gson = new JsonManager();
     private Database database = plugin.getDatabase();
     private boolean isAuthenticate;
+    private boolean isBotVerified;
 
     public Member(String pseudo, UUID uuid, String identifier, String password){
 
@@ -32,6 +33,7 @@ public class Member {
         this.Identifier = identifier;
         this.Password = password;
         isAuthenticate = false;
+        isBotVerified = false;
 
     }
 
@@ -53,6 +55,10 @@ public class Member {
 
     public boolean isAuthenticate() {
         return isAuthenticate;
+    }
+
+    public boolean isBotVerified(){
+        return isBotVerified;
     }
 
     public void setPseudo(String pseudo){
@@ -77,6 +83,10 @@ public class Member {
 
     public void setAuthenticate(boolean bool){
         isAuthenticate = bool;
+    }
+
+    public void setBotVerified(boolean bool){
+        isBotVerified = bool;
     }
 
     public boolean isRegistered(){

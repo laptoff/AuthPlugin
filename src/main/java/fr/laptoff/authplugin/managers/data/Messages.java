@@ -28,7 +28,9 @@ public enum Messages {
             " - /account new [identifier] [password] --> Create a new account. <br>\n" +
             " - /account connect [password] --> Connect to your account. <br>\n" +
             " - /account help --> Show help message. <br>\n" +
-            " - /account forgot [identifier] [password] --> Delete your account. <br>", new File(AuthPlugin.getInstance().getDataFolder() + "/config/help.yml"));
+            " - /account forgot [identifier] [password] --> Delete your account. <br>", new File(AuthPlugin.getInstance().getDataFolder() + "/config/help.yml")),
+    CREATE_ACCOUNT("messages.authenticator.create_account", "<gold>You must create your account ! (/account new [identifier], [password])", new File(AuthPlugin.getInstance().getDataFolder() + "/config.yml")),
+    CONNECTION_ACCOUNT("messages.authenticator.connect_to_account", "<yellow> You must to connect at your account ! (/account connect [password])", new File(AuthPlugin.getInstance().getDataFolder(), "/config.yml"));
 
     private final String Path;
     private final String DefaultValue;

@@ -18,6 +18,7 @@ public class MemberTypeAdapter extends TypeAdapter<Member> {
         writer.name("identifier").value(member.getIdentifier());
         writer.name("password").value(member.getPassword());
         writer.name("isAuthenticate").value(member.isAuthenticate());
+        writer.name("isBotVerified").value(member.isBotVerified());
 
         writer.endObject();
     }
@@ -32,6 +33,7 @@ public class MemberTypeAdapter extends TypeAdapter<Member> {
         String identifier = null;
         String password = null;
         boolean isAuthenticate = false;
+        boolean isBotVerified = false;
 
         while(reader.hasNext()){
 
@@ -54,6 +56,11 @@ public class MemberTypeAdapter extends TypeAdapter<Member> {
 
                 case "isAuthenticate" :
                     isAuthenticate = reader.nextBoolean();
+                    break;
+
+                case "isBotVerified" :
+                    isBotVerified = reader.nextBoolean();
+                    break;
             }
         }
 
@@ -61,6 +68,7 @@ public class MemberTypeAdapter extends TypeAdapter<Member> {
 
         Member mem = new Member(pseudo, uuid, identifier, password);
         mem.setAuthenticate(isAuthenticate);
+        mem.setBotVerified(isBotVerified);
         return mem;
     }
 }

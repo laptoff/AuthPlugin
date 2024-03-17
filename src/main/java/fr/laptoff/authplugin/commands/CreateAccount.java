@@ -4,15 +4,11 @@ import fr.laptoff.authplugin.AuthPlugin;
 import fr.laptoff.authplugin.managers.data.Messages;
 import fr.laptoff.authplugin.managers.member.Member;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
 
 public class CreateAccount implements CommandExecutor {
 

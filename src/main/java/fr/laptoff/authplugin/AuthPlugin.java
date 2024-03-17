@@ -113,4 +113,7 @@ public final class AuthPlugin extends JavaPlugin {
     public Database getDatabase(){
         return database;
     }
+    public ConsoleCommandSender getConsole(){
+        return console;
+    }
 }
