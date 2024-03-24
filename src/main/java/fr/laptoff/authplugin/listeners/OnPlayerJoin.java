@@ -23,12 +23,12 @@ public class OnPlayerJoin implements Listener {
         String generatedString = BotVerifGenerator.generateRandomString(player.getUniqueId(), new Random().nextInt(6, 10));
 
         if (!Member.isExists(player.getUniqueId()))
-            player.sendMessage(MiniMessage.miniMessage().deserialize("<red> You need to pass the bot verification test, please send: <gold>" + generatedString));
+            player.sendMessage(MiniMessage.miniMessage().deserialize(String.format(Messages.BOT_VERIFICATION.getMessage(), generatedString)));
 
         if (Member.isExists(player.getUniqueId())){
 
             if (!Member.getMember(player.getUniqueId()).isBotVerified())
-                player.sendMessage(MiniMessage.miniMessage().deserialize("<red> You need to pass the bot verification test, please send: <gold>" + generatedString));
+                player.sendMessage(MiniMessage.miniMessage().deserialize(String.format(Messages.BOT_VERIFICATION.getMessage(), generatedString)));
         }
 
         if (Member.isExists(player.getUniqueId()) && Member.getMember(player.getUniqueId()).isBotVerified()) {

@@ -66,6 +66,13 @@ messages:
     success_forgot: <green> Your account is now deleted ! Please reconnect yourself !
 
 
+  # %s = Bot Verification code.
+  anti-bot:
+    bot_verification: "<red> You need to pass the bot verification test, please send: <gold> %s"
+    bot_verification_failed: "<red> This is not the good captcha... Please retry with: <gold> %s"
+    bot_verification_succeed: "<green> You successfully passed the bot verification !"
+
+
   errors:
     wrong_number_of_arguments: <red>Your command has a wrong number of arguments !
 

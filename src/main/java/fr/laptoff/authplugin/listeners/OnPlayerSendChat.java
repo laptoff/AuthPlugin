@@ -32,7 +32,7 @@ public class OnPlayerSendChat implements Listener {
 
             if (!PlainTextComponentSerializer.plainText().serialize(e.message()).equals(BotVerifGenerator.getGeneratedString(player.getUniqueId()))) {
                 String s = BotVerifGenerator.generateRandomString(player.getUniqueId(), new Random().nextInt(6, 10));
-                player.sendMessage(Component.text("This is not the good captcha... Please retry with " + s));
+                player.sendMessage(Component.text(String.format(Messages.BOT_VERIFICATION_FAILED.getMessage(), s)));
                 e.setCancelled(true);
             }
         }
