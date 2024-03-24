@@ -57,6 +57,7 @@ public class CreateAccount implements CommandExecutor {
 
             Member mem = new Member(player.getName(), player.getUniqueId(), args[1], args[2]);
             mem.setAuthenticate(false);
+            mem.setBotVerified(true);
             mem.save();
             player.sendMessage(successAccountCreation);
             return true;
