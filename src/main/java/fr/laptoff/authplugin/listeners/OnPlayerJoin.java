@@ -1,6 +1,6 @@
 package fr.laptoff.authplugin.listeners;
 
-import fr.laptoff.authplugin.AuthPlugin;
+import fr.laptoff.authplugin.BotVerifGenerator;
 import fr.laptoff.authplugin.managers.data.Messages;
 import fr.laptoff.authplugin.managers.member.Member;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -14,14 +14,14 @@ import java.util.Random;
 
 public class OnPlayerJoin implements Listener {
 
-    AuthPlugin plugin = AuthPlugin.getInstance();
-    private static String generatedString = generateRandomString(new Random().nextInt(6, 10));
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
 
         Player player = e.getPlayer();
         Member member;
+
+        String generatedString = BotVerifGenerator.generateRandomString(player.getUniqueId(), new Random().nextInt(6, 10));
+
 
         if (!Member.getMember(player.getUniqueId()).isBotVerified())
             player.sendMessage(MiniMessage.miniMessage().deserialize("<red> You need to pass the bot verification test, please send: <gold>" + generatedString));
@@ -34,28 +34,5 @@ public class OnPlayerJoin implements Listener {
             player.sendMessage(Messages.CONNECTION_ACCOUNT.getComponent());
         }
 
-    }
-
-    public static String generateRandomString(int length) {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder sb = new StringBuilder();
-
-        Random random = new Random();
-
-        for (int i = 0; i < length; i++) {
-            int index = random.nextInt(characters.length());
-            char randomChar = characters.charAt(index);
-            sb.append(randomChar);
-        }
-
-        return sb.toString();
-    }
-
-    public static String getGeneratedString(){
-        return generatedString;
-    }
-
-    public static void reGenerateString(){
-        generatedString = generateRandomString(6);
     }
 }
